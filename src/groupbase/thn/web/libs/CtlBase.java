@@ -25,6 +25,7 @@ public abstract class CtlBase<M extends ModelBase> extends HttpServlet {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	protected HttpServletRequest mRequest;
 	protected HttpServletResponse mResponse;
