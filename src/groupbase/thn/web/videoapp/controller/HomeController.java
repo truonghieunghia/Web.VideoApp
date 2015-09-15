@@ -14,7 +14,14 @@ public class HomeController extends CtlBase<HomeModel>{
 	@Override
 	public View doGet() {
 		// TODO Auto-generated method stub
-		return Model.init();
+		String videocode = this.getParam("v");
+		String packageId = this.getParam("packageId");
+		
+		if(videocode!=null){
+			return Model.init(videocode,packageId);
+		}else{
+			return Model.init();
+		}
 	}
 
 	@Override

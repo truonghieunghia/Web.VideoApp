@@ -1,9 +1,11 @@
 package groupbase.thn.web.videoapp.model;
 
 import groupbase.thn.web.libs.ModelBase;
+import groupbase.thn.web.libs.Parse;
 import groupbase.thn.web.libs.View;
 import groupbase.thn.web.libs.ViewAction;
 import groupbase.thn.web.videoapp.from.YoutubeForm;
+import groupbase.thn.web.videoapp.json_object.JsonYoutubeList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +13,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+
+import com.google.gson.Gson;
 
 public class ApiYoutubeModel extends ModelBase {
 
@@ -45,7 +49,7 @@ public class ApiYoutubeModel extends ModelBase {
 		return new View("", ViewAction.OUTTEXT);
 	}
 
-	public String Result(String strurl) {
+	public JsonYoutubeList Result(String strurl) {
 		String data = "";
 		URL url;
 		try {
@@ -61,11 +65,11 @@ public class ApiYoutubeModel extends ModelBase {
 				data = data + line;
 			}
 			reader.close();
-			return data;
+			return Parse.FromJsonToObject(data, JsonYoutubeList.class);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "";
+			return null;
 		}
 
 	}
@@ -79,7 +83,7 @@ public class ApiYoutubeModel extends ModelBase {
 				url = url + "&pageToken=" + youtubeForm.pageToken;
 			}
 		}
-		return new View(Result(url), ViewAction.OUTTEXT);
+		return new View(new Gson().toJson(Result(url)) , ViewAction.OUTTEXT);
 
 	}
 
@@ -92,7 +96,7 @@ public class ApiYoutubeModel extends ModelBase {
 				url = url + "&pageToken=" + youtubeForm.pageToken;
 			}
 		}
-		return new View(Result(url), ViewAction.OUTTEXT);
+		return new View(new Gson().toJson(Result(url)), ViewAction.OUTTEXT);
 
 	}
 
@@ -105,7 +109,7 @@ public class ApiYoutubeModel extends ModelBase {
 				url = url + "&pageToken=" + youtubeForm.pageToken;
 			}
 		}
-		return new View(Result(url), ViewAction.OUTTEXT);
+		return new View(new Gson().toJson(Result(url)), ViewAction.OUTTEXT);
 
 	}
 }

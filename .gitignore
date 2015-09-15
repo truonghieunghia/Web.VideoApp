@@ -14,3 +14,4 @@ war/WEB-INF/lib/appengine-api-1.0-sdk-1.9.25.jar
 war/WEB-INF/lib/appengine-api-labs.jar
 war/WEB-INF/lib/appengine-endpoints-deps.jar
 war/WEB-INF/lib/appengine-endpoints.jar
+*/.class
