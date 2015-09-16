@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/css/admin.css">
-<script type="text/javascript" language="javascript" src="/js/ajax.js"></script>
 <title>Administrator Video</title>
 <script language="JavaScript">
     function changeBack(AppID){
