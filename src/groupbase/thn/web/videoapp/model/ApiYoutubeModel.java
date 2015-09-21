@@ -4,6 +4,7 @@ import groupbase.thn.web.libs.ModelBase;
 import groupbase.thn.web.libs.Parse;
 import groupbase.thn.web.libs.View;
 import groupbase.thn.web.libs.ViewAction;
+import groupbase.thn.web.videoapp.data.entry.VideoEntry;
 import groupbase.thn.web.videoapp.from.YoutubeForm;
 import groupbase.thn.web.videoapp.json_object.JsonVideoList;
 
@@ -96,7 +97,32 @@ public class ApiYoutubeModel extends ModelBase {
 				url = url + "&pageToken=" + youtubeForm.pageToken;
 			}
 		}
-		return new View(new Gson().toJson(Parse.FromJsonToObject(Result(url), JsonVideoList.class)), ViewAction.OUTTEXT);
+		JsonVideoList JsonVideoList =Parse.FromJsonToObject(Result(url), JsonVideoList.class);
+		JsonVideoList resultList = new JsonVideoList();
+		resultList.nextPageToken = JsonVideoList.nextPageToken;
+		resultList.prevPageToken = JsonVideoList.prevPageToken;
+		for(VideoEntry obj :JsonVideoList.listVideo){
+			if(!obj.title.contains("Deleted video")){
+				resultList.listVideo.add(obj);				
+			}
+		}
+		while (resultList.nextPageToken!=null){
+			if(resultList.listVideo.size()< Integer.parseInt(youtubeForm.maxResults)){
+				String url_next = url+"&pageToken=" + resultList.nextPageToken;
+	            JsonVideoList VideoList =Parse.FromJsonToObject(Result(url_next), JsonVideoList.class);
+	            resultList.nextPageToken = VideoList.nextPageToken;
+	    		resultList.prevPageToken = VideoList.prevPageToken;
+	    		for(VideoEntry obj :VideoList.listVideo){
+	    			if(!obj.title.contains("Deleted video")){
+	    				resultList.listVideo.add(obj);				
+	    			}
+	    		}
+			}else{
+				break;
+			}
+            
+        }
+		return new View(new Gson().toJson(resultList), ViewAction.OUTTEXT);
 
 	}
 
