@@ -5,7 +5,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
 /**
  * Created by nghiath on 4/3/15.
  */
@@ -13,11 +12,14 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JsonAnnotation {
 
-    public String FieldName() default "";
+	public String FieldName() default "";
 
-    public Class<?> FieldType() default Object.class;
+	public Class<?> FieldType() default Object.class;
 
-    public boolean isObject() default false;
+	public String[] PathRoot() default "";
 
-    public boolean isList() default false;
+	public boolean isObject() default false;
+
+	public boolean isList() default false;
+	public boolean isEncode() default false;
 }

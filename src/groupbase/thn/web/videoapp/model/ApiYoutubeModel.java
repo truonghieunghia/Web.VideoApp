@@ -5,7 +5,7 @@ import groupbase.thn.web.libs.Parse;
 import groupbase.thn.web.libs.View;
 import groupbase.thn.web.libs.ViewAction;
 import groupbase.thn.web.videoapp.from.YoutubeForm;
-import groupbase.thn.web.videoapp.json_object.JsonYoutubeList;
+import groupbase.thn.web.videoapp.json_object.JsonVideoList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 public class ApiYoutubeModel extends ModelBase {
 
 	public static String URL_HOST = "https://www.googleapis.com/youtube/v3/";
-	public static String KEY_SERVER = "?part=snippet&key=AIzaSyBc68GuwQhA9qxj6vBwKU1XqJ0K75ZI2IU";
+	public static String KEY_SERVER = "?part=snippet&key=AIzaSyD5qj4zNGT_j1lZ9nge6vhSiXyuCMB4jqs";
 
 	@Override
 	public View init() {
@@ -49,7 +49,7 @@ public class ApiYoutubeModel extends ModelBase {
 		return new View("", ViewAction.OUTTEXT);
 	}
 
-	public JsonYoutubeList Result(String strurl) {
+	public String Result(String strurl) {
 		String data = "";
 		URL url;
 		try {
@@ -65,7 +65,7 @@ public class ApiYoutubeModel extends ModelBase {
 				data = data + line;
 			}
 			reader.close();
-			return Parse.FromJsonToObject(data, JsonYoutubeList.class);
+			return data;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class ApiYoutubeModel extends ModelBase {
 				url = url + "&pageToken=" + youtubeForm.pageToken;
 			}
 		}
-		return new View(new Gson().toJson(Result(url)) , ViewAction.OUTTEXT);
+		return new View(new Gson().toJson(Parse.FromJsonToObject(Result(url), JsonVideoList.class)) , ViewAction.OUTTEXT);
 
 	}
 
@@ -96,7 +96,7 @@ public class ApiYoutubeModel extends ModelBase {
 				url = url + "&pageToken=" + youtubeForm.pageToken;
 			}
 		}
-		return new View(new Gson().toJson(Result(url)), ViewAction.OUTTEXT);
+		return new View(new Gson().toJson(Parse.FromJsonToObject(Result(url), JsonVideoList.class)), ViewAction.OUTTEXT);
 
 	}
 

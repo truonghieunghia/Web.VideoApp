@@ -1,4 +1,6 @@
 package groupbase.thn.web.libs;
+import groupbase.thn.web.videoapp.util.Helper;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,29 +26,38 @@ public class Parse {
                 field.setAccessible(true);
                 JsonAnnotation jsonAnnotation = field.getAnnotation(JsonAnnotation.class);
                 if (jsonAnnotation != null) {
+                	Object valueJson = null;
                     try {
-
-                        if (jsonObject.has(jsonAnnotation.FieldName())){
-                            Object valueJson = jsonObject.get(jsonAnnotation.FieldName());
-                            if (valueJson != null) {
-                                if (valueJson instanceof JSONObject) {
-                                    if (jsonAnnotation.isObject()) {
-                                        field.set(result, FromJsonToObject(valueJson.toString(), jsonAnnotation.FieldType()));
-                                    }
-                                } else {
-                                    if (valueJson instanceof JSONArray) {
-                                        if (jsonAnnotation.isObject()) {
-                                            field.set(result, FromJsonArrayToArrayObject(valueJson.toString(), jsonAnnotation.FieldType()));
-                                        }
-                                    } else {
-                                        field.set(result, jsonAnnotation.FieldType().cast(valueJson));
-                                    }
+                    	if (jsonAnnotation.PathRoot()[0].isEmpty()){
+                    		if (jsonObject.has(jsonAnnotation.FieldName())){
+                                 valueJson = jsonObject.get(jsonAnnotation.FieldName());                                
+                            }
+                    	}else{
+                    		 valueJson = getObject(jsonAnnotation.PathRoot(), jsonObject).get(jsonAnnotation.FieldName()) ;
+                            
+                    	}
+                    	if (valueJson != null) {
+                            if (valueJson instanceof JSONObject) {
+                                if (jsonAnnotation.isObject()) {                                	
+                                    field.set(result, FromJsonToObject(valueJson.toString(), jsonAnnotation.FieldType()));
                                 }
                             } else {
-                                field.set(result, null);
+                                if (valueJson instanceof JSONArray) {
+                                    if (jsonAnnotation.isObject()) {
+                                        field.set(result, FromJsonArrayToArrayObject(valueJson.toString(), jsonAnnotation.FieldType()));
+                                    }
+                                } else {
+                                	if (jsonAnnotation.isEncode()){
+                                		field.set(result, jsonAnnotation.FieldType().cast(Helper.base64Encode(valueJson.toString())));
+                                	}else{
+                                		field.set(result, jsonAnnotation.FieldType().cast(valueJson));
+                                	}
+                                    
+                                }
                             }
+                        } else {
+                            field.set(result, null);
                         }
-
                     } catch (JSONException e) {
                     	System.out.printf("JsonParse %s",jsonAnnotation.FieldName()+": "+ e.getMessage());                        
                     } catch (Exception e) {
@@ -61,7 +72,21 @@ public class Parse {
         }
 
     }
-
+    
+    public static JSONObject getObject(String[] path,JSONObject jsonObject){
+    	JSONObject obj = jsonObject;
+    	for(String str:path){
+    		try {
+    			if(obj.has(str)){
+				obj = (JSONObject) obj.get(str);
+    			}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	return obj;
+    }
     public static <T> ArrayList<T> FromJsonArrayToArrayObject(String stringJsonArray,Class<T> typeObject ) {
 
         try {
