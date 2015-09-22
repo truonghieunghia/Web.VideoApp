@@ -5,6 +5,8 @@ import groupbase.thn.web.libs.JsonAnnotation;
 public class VideoEntry {
 	@JsonAnnotation(PathRoot={"snippet"} ,FieldName = "title",FieldType = String.class)
     public String title;
+	@JsonAnnotation( FieldName = "id",FieldType = String.class)
+    public String id;
 	@JsonAnnotation(PathRoot={"snippet","resourceId"},FieldName = "videoId",FieldType = String.class, isEncode = true)
     public String videoId;
 	@JsonAnnotation(PathRoot={"snippet","thumbnails","default"},FieldName = "url",FieldType = String.class)

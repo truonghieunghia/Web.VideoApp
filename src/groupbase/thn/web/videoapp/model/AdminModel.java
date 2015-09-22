@@ -17,7 +17,7 @@ import groupbase.thn.web.videoapp.from.AppsForm;
 import groupbase.thn.web.videoapp.from.QueryStringObject;
 
 public class AdminModel extends ModelBase {
-	private static final String SENDER_ID = "AIzaSyAmMo-S-Cf1Br-kOZn4XMURLYAB9rnYazU";
+	private static final String SENDER_ID = "AIzaSyD5qj4zNGT_j1lZ9nge6vhSiXyuCMB4jqs";
 	private List<String> androidTargets = new ArrayList<String>();
 
 	@Override

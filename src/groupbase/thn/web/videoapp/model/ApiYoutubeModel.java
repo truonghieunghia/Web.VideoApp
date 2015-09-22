@@ -92,6 +92,7 @@ public class ApiYoutubeModel extends ModelBase {
 		String url = URL_HOST + "playlistItems" + KEY_SERVER;
 		url = url + "&playlistId=" + youtubeForm.playlistId + "&maxResults="
 				+ youtubeForm.maxResults;
+		String url_tmp = url;
 		if (youtubeForm.pageToken != null) {
 			if (youtubeForm.pageToken.trim().length() > 0) {
 				url = url + "&pageToken=" + youtubeForm.pageToken;
@@ -102,13 +103,13 @@ public class ApiYoutubeModel extends ModelBase {
 		resultList.nextPageToken = JsonVideoList.nextPageToken;
 		resultList.prevPageToken = JsonVideoList.prevPageToken;
 		for(VideoEntry obj :JsonVideoList.listVideo){
-			if(!obj.title.contains("Deleted video")){
+			if(!obj.title.contains("Deleted video")|| obj.title.contains("Private")){
 				resultList.listVideo.add(obj);				
 			}
 		}
 		while (resultList.nextPageToken!=null){
 			if(resultList.listVideo.size()< Integer.parseInt(youtubeForm.maxResults)){
-				String url_next = url+"&pageToken=" + resultList.nextPageToken;
+				String url_next = url_tmp+"&pageToken=" + resultList.nextPageToken;
 	            JsonVideoList VideoList =Parse.FromJsonToObject(Result(url_next), JsonVideoList.class);
 	            resultList.nextPageToken = VideoList.nextPageToken;
 	    		resultList.prevPageToken = VideoList.prevPageToken;
