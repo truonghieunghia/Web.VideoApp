@@ -8,9 +8,9 @@
 <meta property="og:site_name" content="video-vl.appspot.com" />
 <meta property="og:type" content="website" />
 
-<meta property="og:title" content="Xem video giải trí " />
+<meta property="og:title" content="Xem video giải trí ,tuyển chọn những bộ phim hay của các quốc gia, âu, á , mỹ v...v..v " />
 
-<meta property="og:description" content="Xem video giải trí " />
+<meta property="og:description" content="Xem video giải trí ,tuyển chọn những bộ phim hay của các quốc gia, âu, á , mỹ v...v..v " />
 
 
 <c:if test="${not empty code}">

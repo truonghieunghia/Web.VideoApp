@@ -104,7 +104,9 @@ public class ApiYoutubeModel extends ModelBase {
 		resultList.prevPageToken = JsonVideoList.prevPageToken;
 		for(VideoEntry obj :JsonVideoList.listVideo){
 			if(!obj.title.contains("Deleted video")|| !obj.title.contains("Private video")){
-				resultList.listVideo.add(obj);				
+				if (obj.image_Default != null && obj.image_high != null && obj.image_medium != null){
+    				resultList.listVideo.add(obj);				
+    				}		
 			}
 		}
 		while (resultList.nextPageToken!=null){
@@ -115,7 +117,9 @@ public class ApiYoutubeModel extends ModelBase {
 	    		resultList.prevPageToken = VideoList.prevPageToken;
 	    		for(VideoEntry obj :VideoList.listVideo){
 	    			if(!obj.title.contains("Deleted video")|| !obj.title.contains("Private video")){
-	    				resultList.listVideo.add(obj);				
+	    				if (obj.image_Default != null && obj.image_high != null && obj.image_medium != null){
+	        				resultList.listVideo.add(obj);				
+	        				}
 	    			}
 	    		}
 			}else{
