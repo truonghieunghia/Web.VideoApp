@@ -5,10 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta property="og:site_name" content="video-hot.appspot.com" />
+<meta property="og:site_name" content="video-vl.appspot.com" />
 <meta property="og:type" content="website" />
-
-
 
 <meta property="og:title" content="Xem video giải trí " />
 
@@ -17,11 +15,11 @@
 
 <c:if test="${not empty code}">
 	<meta property="og:url"
-		content="http://app-video.appspot.com/?v=${code}&packageId=${packageId}" />
+		content="http://video-vl.appspot.com/?v=${query}" />
 	<meta property="og:image"
-		content="http://i1.ytimg.com/vi/${code}/1.jpg" />
+		content="${image_url}" />
 </c:if>
-<title>Video App</title>
+<title>${title}</title>
 <script>
 	var isMobile = {
 		Android : function() {
@@ -46,17 +44,19 @@
 	};
 	<c:if test="${not empty code}">
 	if (isMobile.Android()) {
-		location.href = "market://details?id=${packageId}";
+		location.href="market://details?id=groupbase.vn.thn.playviewer";
+		location.href = "playviewer://video_access_tokens?v=${query}";
 	}
 	</c:if>
 </script>
 </head>
 <body>
-	<h1>wellcome Vieo App</h1>
+	<h1>wellcome Video App</h1>
 	<c:if test="${not empty code}">
 		<iframe width="854" height="480"
 			src="https://www.youtube.com/embed/${code}" frameborder="0"
 			allowfullscreen></iframe>
+			<h1>xem nhiều hơn trên</h1> </br><a href="https://play.google.com/store/apps/details?id=${packageId}"><img alt="video" src="/icon/playstore.jpg"></a>
 	</c:if>
 
 </body>

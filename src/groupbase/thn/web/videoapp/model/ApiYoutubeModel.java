@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 public class ApiYoutubeModel extends ModelBase {
 
 	public static String URL_HOST = "https://www.googleapis.com/youtube/v3/";
-	public static String KEY_SERVER = "?part=snippet&key=AIzaSyD5qj4zNGT_j1lZ9nge6vhSiXyuCMB4jqs";
+	public static String KEY_SERVER = "?part=snippet&key=AIzaSyALZZqDtgXVc2Hb5GFPYevPxjj0xDXhNoQ";
 
 	@Override
 	public View init() {
@@ -103,7 +103,7 @@ public class ApiYoutubeModel extends ModelBase {
 		resultList.nextPageToken = JsonVideoList.nextPageToken;
 		resultList.prevPageToken = JsonVideoList.prevPageToken;
 		for(VideoEntry obj :JsonVideoList.listVideo){
-			if(!obj.title.contains("Deleted video")|| obj.title.contains("Private")){
+			if(!obj.title.contains("Deleted video")|| !obj.title.contains("Private video")){
 				resultList.listVideo.add(obj);				
 			}
 		}
@@ -114,7 +114,7 @@ public class ApiYoutubeModel extends ModelBase {
 	            resultList.nextPageToken = VideoList.nextPageToken;
 	    		resultList.prevPageToken = VideoList.prevPageToken;
 	    		for(VideoEntry obj :VideoList.listVideo){
-	    			if(!obj.title.contains("Deleted video")){
+	    			if(!obj.title.contains("Deleted video")|| !obj.title.contains("Private video")){
 	    				resultList.listVideo.add(obj);				
 	    			}
 	    		}
