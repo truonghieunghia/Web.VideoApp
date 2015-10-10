@@ -7,11 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta property="og:site_name" content="video-vl.appspot.com" />
 <meta property="og:type" content="website" />
-
-<meta property="og:title" content="Xem video giải trí ,tuyển chọn những bộ phim hay của các quốc gia, âu, á , mỹ v...v..v " />
-
-<meta property="og:description" content="Xem video giải trí ,tuyển chọn những bộ phim hay của các quốc gia, âu, á , mỹ v...v..v " />
-
+<meta property="og:image" content="${image_url}" />
+<meta property="og:title" content="${title} xem nhiều hơn trên : https://play.google.com/store/apps/details?id=${packageId}" />
+<meta property="og:description" content="Xem video giải trí" />
 
 <c:if test="${not empty code}">
 	<meta property="og:url"
@@ -56,7 +54,7 @@
 		<iframe width="854" height="480"
 			src="https://www.youtube.com/embed/${code}" frameborder="0"
 			allowfullscreen></iframe>
-			<h1>xem nhiều hơn trên</h1> </br><a href="https://play.google.com/store/apps/details?id=${packageId}"><img alt="video" src="/icon/playstore.jpg"></a>
+			<h1>xem nhiều hơn trên</h1> </br><a href="https://play.google.com/store/apps/details?id=${packageId}"><h1>Play Store</h1></a>
 	</c:if>
 
 </body>

@@ -4,6 +4,7 @@ import java.util.List;
 import groupbase.thn.web.libs.ModelBase;
 import groupbase.thn.web.libs.View;
 import groupbase.thn.web.libs.ViewAction;
+import groupbase.thn.web.videoapp.data.AppList;
 import groupbase.thn.web.videoapp.data.Apps;
 import groupbase.thn.web.videoapp.data.Devices;
 import groupbase.thn.web.videoapp.from.DevicesForm;
@@ -22,7 +23,8 @@ public class ApiModel extends ModelBase {
 
 	public View getAppsList(){
 		JsonApp jsonApp = new JsonApp();
-		jsonApp.Apps_list =jdoModel.getList(Apps.class);
+//		jsonApp.Apps_list =jdoModel.getList(Apps.class);
+		jsonApp.Apps_list = new AppList().Apps_list;
 		return new  View(new Gson().toJson(jsonApp), ViewAction.OUTTEXT);
 	}
 	public View RegisterDevice(DevicesForm devicesForm){
@@ -38,8 +40,9 @@ public class ApiModel extends ModelBase {
 		jdoModel.Add(devices);
 		JsonResult jsonResult = new JsonResult();
 		jsonResult.result="OK";
-		jsonResult.Apps_list = jdoModel.getList(Apps.class);
-		updateApp(devices.AppID);
+//		jsonResult.Apps_list = jdoModel.getList(Apps.class);
+//		updateApp(devices.AppID);		
+		jsonResult.Apps_list = new AppList().Apps_list;
 		return new  View(new Gson().toJson(jsonResult), ViewAction.OUTTEXT);
 	}
 	public void updateApp(String appID){
