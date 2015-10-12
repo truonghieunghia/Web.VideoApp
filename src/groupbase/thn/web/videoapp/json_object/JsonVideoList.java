@@ -12,4 +12,22 @@ public class JsonVideoList {
 	public String nextPageToken;
 	@JsonAnnotation(FieldName = "items", FieldType = VideoEntry.class, isObject = true, isList = true)
 	public ArrayList<VideoEntry> listVideo = new ArrayList<VideoEntry>();
+	public String getPrevPageToken() {
+		return prevPageToken;
+	}
+	public void setPrevPageToken(String prevPageToken) {
+		this.prevPageToken = prevPageToken;
+	}
+	public String getNextPageToken() {
+		return nextPageToken;
+	}
+	public void setNextPageToken(String nextPageToken) {
+		this.nextPageToken = nextPageToken;
+	}
+	public ArrayList<VideoEntry> getListVideo() {
+		return listVideo;
+	}
+	public void setListVideo(ArrayList<VideoEntry> listVideo) {
+		this.listVideo = listVideo;
+	}
 }

@@ -7,89 +7,167 @@ body{
 	width:1024px;
 	margin:auto;
 }
-#top{
-	
-	height:100px;
-	background:#999999;
-	text-align:left;
-	line-height:100px;
+#header{
+	background: #FB445A none repeat scroll 0 0;
+    border-bottom: 1px solid #FB445A;
+    border-top: 1px solid #FB445A;
+    box-shadow: 0 1px #FB445A, 0 2px 1px rgba(0, 0, 0, 0.4);
+    color: #c5c5c5;
+    height: 36px;
+    left: 0;
+    margin: auto 0;
+    min-width: 320px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+#headerContent {
+    margin: 0 auto;
+    position: relative;
+    width: 995px;
+}
+ul#menuBar {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 36px;
+}
+#menuBar li {
+    display: inline-block;
+}
+#menuBar a, #menuBar li span {
+    color: #fff;
+    cursor: pointer;
+    padding: 12px 8px;
+    transition: color 0.2s linear 0s;
+}
+.selected > a {
+    color: #000000 !important;
+}
+.selected {
+    border-bottom: 3px solid #000000;
+}
+li {
+    list-style: outside none none;
+    margin: 0;
+}
+#menuBar a:hover, #menuBar span:hover, #menuBar .selected a:hover {
+    color: #000000;
+    text-shadow: 0 1px #000;
 }
 
-#menu{
-	
-	height:30px;
-	background:#CC3366;
-	line-height:30px;
-	
+#content {
+    margin: 60px 0 0;
 }
-#menu ul li{
-	width:256px;
-	list-style-type:none;
-	float:left;
-	text-align:center;
-	position:relative;
+#mainContainer {
+    margin: 0 auto;
+    min-width: 320px;
+    width: 995px;
 }
-#menu ul li a{
-	text-decoration:none;
-	color:#FFFFFF;
+#leftColumn {
+    float: left;
+    width: 685px;
 }
-#submenu{
-	display:none;
-	position:absolute;z-index:90;
-	background:#0099CC;
+#rightColumn {
+    float: right;
+    width: 300px;
 }
-#submenu li{
-	border-bottom:1px  solid #333333;
+div.box {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #aaa;
+    margin: 0 0 10px;
+    padding: 10px 10px 5px;
 }
-#menu li:hover #submenu{
-	display:block;
+#footer {
+    line-height: 1.5em;
+    margin: 20px 0;
+    text-align: center;
+    text-shadow: 0 1px #eee;
 }
-#left{
-	width:822px;
-	float:left;
-	border-left:1px solid #FF0000;
-	border-right:1px solid #FF0000;
-	text-align:center;
-	position: relative;
+.photoListItem {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px 0 20px;
 }
-#loadmore{
-	width:822px;
-	float:left;
-	height:40px;
-	line-height:40px;
-	background-color:#CCCCCC;
-	text-align:center;
-	position: relative;
+.photoList .thumbnail {
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    width: 400px;
 }
-.thumbnail{
-	width:120px;
-	height:130px;
-	float:left;
-	padding:2px;
-	margin:auto;
+photoList .thumbnail img.videoIndicator {
+    margin-top: -62px;
+    position: relative;
+    top: -130px;
 }
-.thumbnail a img{
-	width:120px;
-	height:90px;
+img {
+    border: medium none;
 }
-
-.thumbnail #title{
-	line-height: 1em;
-    height: 2em;       
-    overflow: hidden;  
-	word-wrap: break-word;
-	text-overflow: ellipsis;
-	white-space: pre-line;
+.photoList .thumbnail img {
+    margin: 0 auto -25px;
+    max-width: 400px;
 }
-
-#right{
-	width:200px;
-	float:left;
+.photoList .thumbnail {
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    width: 400px;
 }
-#bottom{
-	
-	height:30px;
-	background:#CC3366;
-	text-align:center;
-	line-height:30px;
+.clear {
+    clear: both;
+    height: 0;
+}
+.photoList .thumbnail img.videoIndicator {
+    margin-top: -62px;
+    position: relative;
+    top: -130px;
+}
+.listItemSeparator {
+    height: 1px;
+}
+.nextListPage {
+    color: white;
+    float: left;
+    margin-bottom: 10px;
+    width: 635px;
+}
+.buttons {
+    background-color: #26772f;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 1px white;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    min-width: 45px;
+    padding: 0 10px;
+    text-align: center;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s linear 0s;
+}
+.photoList .info {
+    margin-left: 410px;
+    width: 240px;
+    z-index: 1;
+}
+element.style {
+    position: fixed;
+    top: 60px;
+}
+.photoList h2 {
+    line-height: 1.2em;
+    margin: 0 0 10px;
+}
+a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s linear 0s;
+}
+* {
+    outline: medium none;
+    transition: all 0.3s ease 0s;
 }

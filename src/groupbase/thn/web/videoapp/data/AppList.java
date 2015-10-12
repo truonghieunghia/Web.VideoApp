@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppList {
-	private Apps mPhimBo = new Apps();
-	private Apps mPhimLe = new Apps();
-	private Apps mPhimViet = new Apps();
-	private Apps mClipHay = new Apps();
-	private Apps mClipVl = new Apps();
-	private Apps mClipHai = new Apps();
+	public Apps mPhimBo = new Apps();
+	public Apps mPhimLe = new Apps();
+	public Apps mPhimViet = new Apps();
+	public Apps mClipHay = new Apps();
+	public Apps mClipVl = new Apps();
+	public Apps mClipHai = new Apps();
 
 	public List<Apps> Apps_list = new ArrayList<Apps>();
 	public AppList (){

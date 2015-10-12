@@ -31,8 +31,18 @@
   <servlet-name>ApiYoutubeController</servlet-name>
   <servlet-class>groupbase.thn.web.videoapp.api.ApiYoutubeController</servlet-class>
  </servlet>
+ <servlet>
+  <display-name>IndexController</display-name>
+  <servlet-name>IndexController</servlet-name>
+  <servlet-class>groupbase.thn.web.videoapp.controller.IndexController</servlet-class>
+ </servlet>
+ <servlet>
+  <display-name>PlayController</display-name>
+  <servlet-name>PlayController</servlet-name>
+  <servlet-class>groupbase.thn.web.videoapp.controller.PlayController</servlet-class>
+ </servlet>
  <servlet-mapping>
-  <servlet-name>HomeController</servlet-name>
+  <servlet-name>IndexController</servlet-name>
   <url-pattern>/index.html</url-pattern>
  </servlet-mapping>
  <servlet-mapping>
@@ -50,6 +60,10 @@
  <servlet-mapping>
   <servlet-name>ApiYoutubeController</servlet-name>
   <url-pattern>/api/youtube</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>PlayController</servlet-name>
+  <url-pattern>/view</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.html</welcome-file>
