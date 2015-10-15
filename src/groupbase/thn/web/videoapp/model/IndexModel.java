@@ -24,6 +24,8 @@ public class IndexModel extends ModelBase{
 		youtubeForm.maxResults = "5";
 		JsonVideoList list = Helper.getPlaylistItems(youtubeForm);
 		view.setData("list", list);
+		view.setData("selected", app.mClipVl.AppID);
+		view.setData("appid", "clipvl");
 		return view;
 	}
 	public View init(String param,String appid) {
@@ -39,5 +41,18 @@ public class IndexModel extends ModelBase{
 			e.printStackTrace();
 			return new View("",ViewAction.OUTTEXT);
 		}
+	}
+	public View nextPage(String page){
+		View view = new View("index");
+		YoutubeForm youtubeForm = new YoutubeForm();
+		AppList app = new AppList();
+		youtubeForm.playlistId =app.mClipVl.Api_Key;
+		youtubeForm.maxResults = "5";
+		youtubeForm.pageToken = page;
+		JsonVideoList list = Helper.getPlaylistItems(youtubeForm);
+		view.setData("list", list);
+		view.setData("selected", app.mClipVl.AppID);
+		view.setData("appid", "clipvl");
+		return view;
 	}
 }

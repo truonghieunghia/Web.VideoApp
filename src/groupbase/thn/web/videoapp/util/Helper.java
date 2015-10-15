@@ -1,8 +1,6 @@
 package groupbase.thn.web.videoapp.util;
 
 import groupbase.thn.web.libs.Parse;
-import groupbase.thn.web.libs.View;
-import groupbase.thn.web.libs.ViewAction;
 import groupbase.thn.web.videoapp.data.entry.VideoEntry;
 import groupbase.thn.web.videoapp.from.YoutubeForm;
 import groupbase.thn.web.videoapp.json_object.JsonVideoList;
@@ -17,7 +15,6 @@ import java.nio.charset.Charset;
 
 import org.apache.geronimo.mail.util.Base64;
 
-import com.google.gson.Gson;
 
 public class Helper {
 	public static String URL_HOST = "https://www.googleapis.com/youtube/v3/";
@@ -124,4 +121,16 @@ public class Helper {
 		return resultList;
 
 	}
+    public static JsonVideoList getPlaylist(YoutubeForm youtubeForm) {
+    	String url = URL_HOST + "playlists" + KEY_SERVER;
+		url = url + "&channelId=" + youtubeForm.channelId + "&maxResults="
+				+ youtubeForm.maxResults;
+		if (youtubeForm.pageToken != null) {
+			if (youtubeForm.pageToken.trim().length() > 0) {
+				url = url + "&pageToken=" + youtubeForm.pageToken;
+			}
+		}
+		JsonVideoList JsonVideoList =Parse.FromJsonToObject(Helper.Result(url), JsonVideoList.class);
+    	return JsonVideoList;
+    }
 }

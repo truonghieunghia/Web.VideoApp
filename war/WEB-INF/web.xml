@@ -41,6 +41,11 @@
   <servlet-name>PlayController</servlet-name>
   <servlet-class>groupbase.thn.web.videoapp.controller.PlayController</servlet-class>
  </servlet>
+ <servlet>
+  <display-name>PlayListController</display-name>
+  <servlet-name>PlayListController</servlet-name>
+  <servlet-class>groupbase.thn.web.videoapp.controller.PlayListController</servlet-class>
+ </servlet>
  <servlet-mapping>
   <servlet-name>IndexController</servlet-name>
   <url-pattern>/index.html</url-pattern>
@@ -64,6 +69,10 @@
  <servlet-mapping>
   <servlet-name>PlayController</servlet-name>
   <url-pattern>/view</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>PlayListController</servlet-name>
+  <url-pattern>danh-muc</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.html</welcome-file>

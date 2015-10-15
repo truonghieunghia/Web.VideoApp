@@ -1,59 +1,18 @@
-<%@ include file="admin/lib.jsp"%>
+<%@ include file="lib.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/css/home.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta property="og:site_name" content="video-vl.appspot.com" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="${image_url}" />
-<meta property="og:title" content="${title} xem nhiều hơn trên : https://play.google.com/store/apps/details?id=${packageId}" />
-<meta property="og:description" content="Xem video giải trí" />
-
-<c:if test="${not empty code}">
-	<meta property="og:url"
-		content="http://video-vl.appspot.com/?v=${query}" />
-	<meta property="og:image"
-		content="${image_url}" />
-</c:if>
-<title>${title}</title>
-<script>
-	var isMobile = {
-		Android : function() {
-			return navigator.userAgent.match(/Android/i);
-		},
-		BlackBerry : function() {
-			return navigator.userAgent.match(/BlackBerry/i);
-		},
-		iOS : function() {
-			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-		},
-		Opera : function() {
-			return navigator.userAgent.match(/Opera Mini/i);
-		},
-		Windows : function() {
-			return navigator.userAgent.match(/IEMobile/i);
-		},
-		any : function() {
-			return (isMobile.Android() || isMobile.BlackBerry()
-					|| isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-		}
-	};
-	<c:if test="${not empty code}">
-	if (isMobile.Android()) {
-		location.href="market://details?id=groupbase.vn.thn.playviewer";
-		location.href = "playviewer://video_access_tokens?v=${query}";
-	}
-	</c:if>
-</script>
+<link rel="stylesheet" type="text/css" href="/css/home.css">
+<title>VideoVL</title>
 </head>
 <body>
 <div id ="header">
 	<div id="headerContent">
 		<div id="logo_a" style="float: left;margin-bottom: -5px;height: 36px;margin-right: 10px ;position: relative;z-index: 100;">
-			<a  href="//videovl.tk/">
+			<a title="Haivl | Ảnh Vui | Clip Hài | Hài VL | Haiivl | Hài Vui Lắm | Haivl.com | Haivl.tv" href="//videovl.tk/">
 				<img src="icon/logo.png"/>
 			</a>
 		</div>
@@ -72,12 +31,30 @@
 	<div id="mainContainer">
 		<div id="leftColumn">
 			<div class="box">
-				<c:if test="${not empty code}">
-		<iframe width="665" height="480"
-			src="https://www.youtube.com/embed/${code}" frameborder="0"
-			allowfullscreen></iframe>
-			<h1>xem nhiều hơn trên</h1> </br><a href="https://play.google.com/store/apps/details?id=${packageId}"><h1>Play Store</h1></a>
-	</c:if>
+				<h3>Nội dung mới</h3>
+				<div class="photoList">
+					
+					<c:forEach var="data" items="${list.listVideo}">
+					<div class="photoListItem" data-nsfw="False" data-newly-listed="True" data-id="36952">
+						<div class="listItemSeparator"> </div>
+						<div class="thumbnail">
+							<a href="/danh-muc?appid=${appid}&list=${data.id}">
+							<img class="thumbImg" alt="${data.image_high}" src="${data.image_high}">						
+							<img class="videoIndicator" src="//haivl.photos/images/play_icon.png">
+							</a>
+						</div>
+						<div id="info">
+							<h2>
+							<a href="/danh-muc?appid=${appid}&list=${data.id}">${data.title}</a>
+							</h2>
+							
+						</div>
+						<div class="clear"> </div>
+					</div>
+					</c:forEach>
+				</div>
+				<span class="buttons nextListPage">
+				<a rel="next" href="/danh-muc?appid=${appid}&page=${list.nextPageToken}">Nhấp tiếp để vui hơn</a>
 				</span>
 				<div class="clear"> </div>
 			</div>
@@ -102,6 +79,5 @@
 		</div>
 	</div>
 </div>
-	
 </body>
 </html>
