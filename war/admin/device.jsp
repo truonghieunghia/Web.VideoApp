@@ -14,7 +14,7 @@
 	</div>
 
 	<div id="htmldata">
-		<table border="1">
+		<%-- <table border="1">
 			<tr>
 				<td>OS</td>
 				<td>DevicesName</td>
@@ -35,6 +35,6 @@
 					</tr>
 
 				</c:forEach>
-		</table>
+		</table> --%>
 	</div>
 </c:if>

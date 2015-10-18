@@ -14,33 +14,33 @@ public class PlayController extends CtlBase<PlayModel>{
 
 	@Override
 	public View doGet() {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
+
 				String param = this.getParam("v");
 				String appid = this.getParam("appid");
+				
 				if(appid!=null){
 					if (param!=null){
-						//groupbase.vn.thn
-						String parameter = param;
+						//groupbase.vn.thn					
 						param=Helper.base64Decode(param);
 						String[] array_param = param.split(",");
 						String packageId ="groupbase.vn.thn."+appid;
 						String videocode = Helper.base64Decode(array_param[0]);
 						String title = array_param[1];
-						String image = array_param[2];
-						return Model.init(videocode,packageId,title,image,parameter);
+						String image = array_param[array_param.length-1];
+						
+						return Model.init(videocode,packageId,title,image,getQueryString());
 						
 					}
 				}else{
-					if (param!=null){
-						String parameter = param;
+					if (param!=null){						
 						param=Helper.base64Decode(param);
 						String[] array_param = param.split(",");
 						String packageId = array_param[0];
 						String videocode = Helper.base64Decode(array_param[1]);
 						String title = array_param[2];
-						String image = array_param[3];
-						return Model.init(videocode,packageId,title,image,parameter);
+						String image = array_param[array_param.length-1];
+						
+						return Model.init(videocode,packageId,title,image.replace("default","hqdefault"),getQueryString());
 						
 					}
 				}

@@ -12,16 +12,16 @@
 <div id ="header">
 	<div id="headerContent">
 		<div id="logo_a" style="float: left;margin-bottom: -5px;height: 36px;margin-right: 10px ;position: relative;z-index: 100;">
-			<a title="Haivl | Ảnh Vui | Clip Hài | Hài VL | Haiivl | Hài Vui Lắm | Haivl.com | Haivl.tv" href="//videovl.tk/">
+			<a  href="//videovl.tk/">
 				<img src="icon/logo.png"/>
 			</a>
 		</div>
 		<ul id="menuBar">
 			<li <c:if test="${selected == 5}">class="selected"</c:if> ><a title="ClipVL" href="/">ClipVL</a></li>
-			<li <c:if test="${selected == 1}">class="selected"</c:if>><a title="Phim Bộ" href="/danh-muc?appid=phimbo">Phim Bộ</a></li>
-			<li <c:if test="${selected == 3}">class="selected"</c:if>><a title="Phim lẻ" href="/danh-muc?appid=phimle">Phim lẻ</a></li>
-			<li <c:if test="${selected == 7}">class="selected"</c:if>><a title="Phim Việt" href="/danh-muc?appid=phimviet">Phim Việt</a></li>
-			<li <c:if test="${selected == 6}">class="selected"</c:if>><a title="Phim Hài,Clip hài" href="/danh-muc?appid=cliphai">Phim Hài,Clip hài</a></li>
+			<li <c:if test="${selected == 1}">class="selected"</c:if>><a title="Phim Bộ" href="/danh_muc?appid=phimbo">Phim Bộ</a></li>
+			<li <c:if test="${selected == 3}">class="selected"</c:if>><a title="Phim lẻ" href="/danh_muc?appid=phimle">Phim lẻ</a></li>
+			<li <c:if test="${selected == 7}">class="selected"</c:if>><a title="Phim Việt" href="/danh_muc?appid=phimviet">Phim Việt</a></li>
+			<li <c:if test="${selected == 6}">class="selected"</c:if>><a title="Phim Hài,Clip hài" href="/danh_muc?appid=cliphai">Phim Hài,Clip hài</a></li>
 		</ul>
 	</div>
 </div>
@@ -38,14 +38,14 @@
 					<div class="photoListItem" data-nsfw="False" data-newly-listed="True" data-id="36952">
 						<div class="listItemSeparator"> </div>
 						<div class="thumbnail">
-							<a href="/danh-muc?appid=${appid}&list=${data.id}">
+							<a href="/danh_muc?appid=${appid}&list=${data.id}">
 							<img class="thumbImg" alt="${data.image_high}" src="${data.image_high}">						
-							<img class="videoIndicator" src="//haivl.photos/images/play_icon.png">
+							<img class="videoIndicator" src="/icon/play_icon.png">
 							</a>
 						</div>
 						<div id="info">
 							<h2>
-							<a href="/danh-muc?appid=${appid}&list=${data.id}">${data.title}</a>
+							<a href="/danh_muc?appid=${appid}&list=${data.id}">${data.title}</a>
 							</h2>
 							
 						</div>
@@ -54,7 +54,7 @@
 					</c:forEach>
 				</div>
 				<span class="buttons nextListPage">
-				<a rel="next" href="/danh-muc?appid=${appid}&page=${list.nextPageToken}">Nhấp tiếp để vui hơn</a>
+				<a rel="next" href="/danh_muc?appid=${appid}&page=${list.nextPageToken}">Nhấp tiếp để vui hơn</a>
 				</span>
 				<div class="clear"> </div>
 			</div>
@@ -76,6 +76,15 @@
 			</div> -->
 		</div>
 		<div id="rightColumn">
+		 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- left -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-8901310056592294"
+     data-ad-slot="2995341160"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 		</div>
 	</div>
 </div>

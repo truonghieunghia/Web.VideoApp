@@ -68,6 +68,9 @@ public abstract class CtlBase<M extends ModelBase> extends HttpServlet {
 		return clazz.cast(value);
 	}
 
+	protected String getQueryString(){
+		return mRequest.getQueryString();
+	}
 	protected <T> T getDataPost(Class<T> formData) {
 		try {
 			List<Field> fields = new ArrayList<Field>();

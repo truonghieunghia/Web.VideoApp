@@ -18,10 +18,10 @@
 		</div>
 		<ul id="menuBar">
 			<li <c:if test="${selected == 5}">class="selected"</c:if> ><a title="ClipVL" href="/">ClipVL</a></li>
-			<li <c:if test="${selected == 1}">class="selected"</c:if>><a title="Phim Bộ" href="/danh-muc?appid=phimbo">Phim Bộ</a></li>
-			<li <c:if test="${selected == 3}">class="selected"</c:if>><a title="Phim lẻ" href="/danh-muc?appid=phimle">Phim lẻ</a></li>
-			<li <c:if test="${selected == 7}">class="selected"</c:if>><a title="Phim Việt" href="/danh-muc?appid=phimviet">Phim Việt</a></li>
-			<li <c:if test="${selected == 6}">class="selected"</c:if>><a title="Phim Hài,Clip hài" href="/danh-muc?appid=cliphai">Phim Hài,Clip hài</a></li>
+			<li <c:if test="${selected == 1}">class="selected"</c:if>><a title="Phim Bộ" href="/danh_muc?appid=phimbo">Phim Bộ</a></li>
+			<li <c:if test="${selected == 3}">class="selected"</c:if>><a title="Phim lẻ" href="/danh_muc?appid=phimle">Phim lẻ</a></li>
+			<li <c:if test="${selected == 7}">class="selected"</c:if>><a title="Phim Việt" href="/danh_muc?appid=phimviet">Phim Việt</a></li>
+			<li <c:if test="${selected == 6}">class="selected"</c:if>><a title="Phim Hài,Clip hài" href="/danh_muc?appid=cliphai">Phim Hài,Clip hài</a></li>
 		</ul>
 	</div>
 </div>
@@ -54,7 +54,8 @@
 					</c:forEach>
 				</div>
 				<span class="buttons nextListPage">
-				<a rel="next" href="?page=${list.nextPageToken}">Nhấp tiếp để vui hơn</a>
+				
+				<a rel="next" href="?page=${list.nextPageToken}<c:if test="${not empty id}">&appid=${appid}&list=${id}</c:if>">Nhấp tiếp để vui hơn</a>
 				</span>
 				<div class="clear"> </div>
 			</div>
@@ -76,6 +77,15 @@
 			</div> -->
 		</div>
 		<div id="rightColumn">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- left -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-8901310056592294"
+     data-ad-slot="2995341160"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 		</div>
 	</div>
 </div>

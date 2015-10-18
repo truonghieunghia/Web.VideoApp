@@ -1,5 +1,7 @@
 package groupbase.thn.web.videoapp.model;
 
+import java.net.URLEncoder;
+
 import groupbase.thn.web.libs.ModelBase;
 import groupbase.thn.web.libs.View;
 

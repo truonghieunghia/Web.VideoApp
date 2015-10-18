@@ -19,7 +19,7 @@ public class PlayListModel extends ModelBase {
 	public View phimle(String page) {
 		View view = new View("playlist");
 		YoutubeForm youtubeForm = new YoutubeForm();
-		AppList app = new AppList();
+		AppList app = new AppList(true);
 		youtubeForm.channelId = app.mPhimLe.Api_Key;
 		youtubeForm.maxResults = "5";
 		if (page != null) {
@@ -37,7 +37,7 @@ public class PlayListModel extends ModelBase {
 
 		View view = new View("playlist");
 		YoutubeForm youtubeForm = new YoutubeForm();
-		AppList app = new AppList();
+		AppList app = new AppList(true);
 		youtubeForm.channelId = app.mPhimBo.Api_Key;
 		youtubeForm.maxResults = "5";
 		if (page != null) {
@@ -45,6 +45,7 @@ public class PlayListModel extends ModelBase {
 		}
 		JsonVideoList list = Helper.getPlaylist(youtubeForm);
 		view.setData("list", list);
+		view.setData("page", "phimbo&");
 		view.setData("selected", app.mPhimBo.AppID);
 		view.setData("appid", "phimbo");
 		return view;
@@ -55,7 +56,7 @@ public class PlayListModel extends ModelBase {
 
 		View view = new View("playlist");
 		YoutubeForm youtubeForm = new YoutubeForm();
-		AppList app = new AppList();
+		AppList app = new AppList(true);
 		youtubeForm.channelId = app.mClipHai.Api_Key;
 		youtubeForm.maxResults = "5";
 		if (page != null) {
@@ -73,7 +74,7 @@ public class PlayListModel extends ModelBase {
 
 		View view = new View("playlist");
 		YoutubeForm youtubeForm = new YoutubeForm();
-		AppList app = new AppList();
+		AppList app = new AppList(true);
 		youtubeForm.channelId = app.mPhimViet.Api_Key;
 		youtubeForm.maxResults = "5";
 		if (page != null) {
@@ -99,6 +100,7 @@ public class PlayListModel extends ModelBase {
 		view.setData("list", list);
 		view.setData("selected", selected);
 		view.setData("appid", appid);
+		view.setData("id", playListItem);
 		return view;
 	}
 

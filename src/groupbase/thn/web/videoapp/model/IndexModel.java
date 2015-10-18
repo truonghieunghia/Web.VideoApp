@@ -19,7 +19,7 @@ public class IndexModel extends ModelBase{
 		// TODO Auto-generated method stub
 		View view = new View("index");
 		YoutubeForm youtubeForm = new YoutubeForm();
-		AppList app = new AppList();
+		AppList app = new AppList(true);
 		youtubeForm.playlistId =app.mClipVl.Api_Key;
 		youtubeForm.maxResults = "5";
 		JsonVideoList list = Helper.getPlaylistItems(youtubeForm);
@@ -45,7 +45,7 @@ public class IndexModel extends ModelBase{
 	public View nextPage(String page){
 		View view = new View("index");
 		YoutubeForm youtubeForm = new YoutubeForm();
-		AppList app = new AppList();
+		AppList app = new AppList(true);
 		youtubeForm.playlistId =app.mClipVl.Api_Key;
 		youtubeForm.maxResults = "5";
 		youtubeForm.pageToken = page;
